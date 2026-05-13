@@ -193,22 +193,32 @@ export class ThemeManager {
 
   /**
    * Advance to next theme and return it.
-   * Cycles: default → packs[0] → ... → packs[n-1] → default → ...
+   * Cycles: default(-1) → packs[0] → packs[1] → ... → packs[n-1] → default(-1) → ...
    * Mirrors .next().
    */
   next() {
     if (this._packs.length === 0) return null;
-    this._index = (this._index + 1) % this._packs.length;
+    // Advance through 0..n-1, then wrap back to -1 (default)
+    if (this._index >= this._packs.length - 1) {
+      this._index = -1;
+    } else {
+      this._index++;
+    }
     return this.current();
   }
 
-  /** Step backward through themes. Mirrors .prev(). */
+  /**
+   * Step backward through themes.
+   * Cycles: default(-1) → packs[n-1] → ... → packs[0] → default(-1) → ...
+   * Mirrors .prev().
+   */
   prev() {
     if (this._packs.length === 0) return null;
-    if (this._index <= 0) {
+    // Step back through 0..n-1, wrapping from -1 (default) to the last pack
+    if (this._index === -1) {
       this._index = this._packs.length - 1;
     } else {
-      this._index--;
+      this._index--;   // goes to -1 when at index 0, which is correct (default)
     }
     return this.current();
   }
