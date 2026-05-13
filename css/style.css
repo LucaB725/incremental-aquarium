@@ -1,0 +1,27 @@
+/*
+ * style.css — Page chrome only.
+ * All game rendering happens on the canvas — this file just makes the
+ * canvas fill the window cleanly and removes browser default margins.
+ */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #000033; /* fallback behind canvas during first frame */
+}
+
+#tank {
+  display: block;
+  width: 100vw;
+  height: 100vh;
+  /* Pixel-perfect scaling — no subpixel blurring on the characters */
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
