@@ -1,0 +1,626 @@
+# fish_full.txt — Full sprite library
+# All sprites from fish.txt are included, plus many new additions.
+# Organised by size: 1-row (tiny), 2-row (small), 3-row (medium), tall (4–7 row).
+#
+# Format rules (same as fish.txt):
+#   [name]         section header
+#   right = ...    top row facing right  (bare key = row 0)
+#   right1 = ...   second row
+#   left  = ...    top row facing left
+#   left1 = ...    second row
+#   color = cyan   one of: black red green yellow blue magenta cyan white
+
+
+# ════════════════════════════════════════════════════════════════════
+#  1-ROW  (tiny darters)
+# ════════════════════════════════════════════════════════════════════
+
+[dart]
+right = >--->
+left  = <---<
+color = white
+
+[minnow]
+right = ><>
+left  = <><
+color = cyan
+
+[guppy]
+right = ><((°>
+left  = <°))><
+color = yellow
+
+[tetra]
+right = -><-
+left  = ->--
+color = cyan
+
+[neon]
+right = »==>
+left  = <==«
+color = cyan
+
+[zipfish]
+right = ~>~>
+left  = <~<~
+color = green
+
+[sliver]
+right = ----{>
+left  = <}----
+color = white
+
+[puffer_small]
+right = °><°
+left  = °><°
+color = yellow
+
+[dace]
+right = ,><,
+left  = ,><,
+color = white
+
+[sprat]
+right = '.>
+left  = <.'
+color = white
+
+[shrimp]
+right = ,<°)))><
+left  = ><(((°>,
+color = red
+
+[goby]
+right = ¸><((>
+left  = <))><¸
+color = green
+
+[danio]
+right = ≈><≈
+left  = ≈><≈
+color = cyan
+
+[sardine]
+right = ·><·
+left  = ·><·
+color = white
+
+[anchovy]
+right = -°><°-
+left  = -°><°-
+color = white
+
+[ricefish]
+right = °>°
+left  = °<°
+color = yellow
+
+
+# ════════════════════════════════════════════════════════════════════
+#  2-ROW  (small swimmers)
+# ════════════════════════════════════════════════════════════════════
+
+[angelfish]
+right  = .><((°>
+right1 = ·  ~~~
+left   = <°))><.
+left1  = ~~~  ·
+color  = magenta
+
+[goldfish]
+right  =  ><))°>
+right1 = /  ~~~
+left   = <°((<
+left1  = ~~~  \
+color  = yellow
+
+[betta]
+right  = ><(((*>
+right1 = ~~~\\\
+left   = <***)><
+left1  = ///~~~
+color  = red
+
+[clownfish]
+right  = ><{{{°>
+right1 =  ~~|||
+left   = <°}}}><
+left1  = |||~~
+color  = red
+
+[swordfish_small]
+right  = =====>--
+right1 =       \>
+left   = --<=====
+left1  = </
+color  = cyan
+
+[triggerfish]
+right  = ><(((|°>
+right1 =   ~~~~
+left   = <°|(((><
+left1  =   ~~~~
+color  = yellow
+
+[wrasse]
+right  = °><((·>
+right1 = ~·~~··
+left   = <·))><°
+left1  = ··~~·~
+color  = green
+
+[blowfish]
+right  = .·°><°·.
+right1 =   ~~~~~
+left   = .·°><°·.
+left1  =   ~~~~~
+color  = yellow
+
+[parrotfish]
+right  = >((( )))>
+right1 =  ~~ ~~
+left   = <((( )))<
+left1  =  ~~ ~~
+color  = magenta
+
+[rainbowfish]
+right  = »·><·((>
+right1 = ~~·~~~~
+left   = <((·><·«
+left1  = ~~~~·~~
+color  = cyan
+
+[discus]
+right  =  ><(((°>
+right1 = /  ~~~~\
+left   =  <°)))><
+left1  = /~~~~  \
+color  = magenta
+
+[gourami]
+right  = ><((·>
+right1 = ·~~~·
+left   = <·))><
+left1  = ·~~~·
+color  = cyan
+
+[dory]
+right  = ><{(·>
+right1 = ~||~~~
+left   = <·)}><
+left1  = ~~~||~
+color  = blue
+
+[oscar]
+right  = >((((°>
+right1 = ·  ~~~
+left   = <°))))>
+left1  = ~~~  ·
+color  = red
+
+[koi]
+right  = »><(((°>
+right1 = ~~ ~~~~~
+left   = <°)))><«
+left1  = ~~~~~ ~~
+color  = red
+
+[firefish]
+right  = ><((/°>
+right1 = ~~/~~~~
+left   = <°\))><
+left1  = ~~~~\~~
+color  = red
+
+[sunfish_sm]
+right  = ·O><O·
+right1 =  ~~~~
+left   = ·O><O·
+left1  =  ~~~~
+color  = yellow
+
+[carp]
+right  = »><(((>
+right1 = ·  ~~~
+left   = <(((><«
+left1  = ~~~  ·
+color  = yellow
+
+[molly]
+right  = ><((·>
+right1 = ~·~~~
+left   = <·))><
+left1  = ~~~·~
+color  = black
+
+[platy]
+right  = ·><(·>
+right1 = ~~·~~
+left   = <·)<·
+left1  = ~~·~~
+color  = yellow
+
+[swordtail]
+right  = ><((°>-
+right1 = ~~~~~\
+left   = -<°))><
+left1  = /~~~~~
+color  = red
+
+[hatchetfish]
+right  =   ><>
+right1 = \/~~~
+left   =   <><
+left1  = ~~~\/
+color  = white
+
+[pipefish]
+right  = =-=-=-=-=->
+right1 = ----------
+left   = <-=-=-=-=-=
+left1  = ----------
+color  = green
+
+[butterflyfish]
+right  =  ·><·
+right1 = / ~~ \
+left   =  ·><·
+left1  = / ~~ \
+color  = yellow
+
+[archerfish]
+right  = ><((·)>
+right1 =  ·~~~~
+left   = <(·))><
+left1  = ~~~~·
+color  = white
+
+[barb]
+right  = ><(|°>
+right1 = ~~|~~
+left   = <°|)><
+left1  = ~~|~~
+color  = green
+
+[rasbora]
+right  = °><(·>
+right1 = ·~~~~
+left   = <·)<°
+left1  = ~~~~·
+color  = red
+
+
+# ════════════════════════════════════════════════════════════════════
+#  3-ROW  (medium fish)
+# ════════════════════════════════════════════════════════════════════
+
+[lionfish]
+right  =  /\  /\  /\
+right1 = ><((((((°>
+right2 =  \/  \/  \/
+left   =  /\  /\  /\
+left1  = <°))))))><
+left2  =  \/  \/  \/
+color  = red
+
+[pufferfish]
+right  = .·°°·.
+right1 = >(°°°)>
+right2 = '·°°·'
+left   = .·°°·.
+left1  = <(°°°)<
+left2  = '·°°·'
+color  = yellow
+
+[seahorse]
+right  =  (°>
+right1 = S(
+right2 =  §
+left   = <°)
+left1  =  )S
+left2  =  §
+color  = yellow
+
+[cuttlefish]
+right  =  /====\
+right1 = < °  ° >-
+right2 =  \====/
+left   =  /====\
+left1  = -< °  ° >
+left2  =  \====/
+color  = magenta
+
+[flounder]
+right  =  _____
+right1 = / ° · \>
+right2 = \_____/
+left   =  _____
+left1  = </ · ° \
+left2  =  \_____/
+color  = yellow
+
+[trout]
+right  =   /\
+right1 = ><((°>
+right2 =   \/
+left   =   /\
+left1  = <°))><
+left2  =   \/
+color  = green
+
+[salmon]
+right  =    /\
+right1 = ><((°>·
+right2 =    \/·
+left   =   /\
+left1  = ·<°))><
+left2  = ·\/
+color  = red
+
+[tuna]
+right  =  /\
+right1 = >((((°>
+right2 =  \/
+left   =  /\
+left1  = <°))))><
+left2  =  \/
+color  = cyan
+
+[bass]
+right  =    /|
+right1 = ><(((°>
+right2 =    \|
+left   =    |\
+left1  = <°)))><
+left2  =    |/
+color  = green
+
+[catfish]
+right  = ·-·
+right1 = ><((·°>
+right2 = ~·~~~~
+left   = ·-·
+left1  = <°·))><
+left2  = ~~~~·~
+color  = black
+
+[piranha]
+right  =  _/\_
+right1 = >(°°°)>
+right2 =  \/\/
+left   =  _/\_
+left1  = <(°°°)<
+left2  =  \/\/
+color  = red
+
+[moray]
+right  =  ~~~~~
+right1 = S~~~~~>
+right2 =  ~~~~~
+left   =  ~~~~~
+left1  = <~~~~~S
+left2  =  ~~~~~
+color  = green
+
+[hammerhead]
+right  =   ___
+right1 = --[°]---=>
+right2 =   ---
+left   =    ___
+left1  = <=---[°]--
+left2  =    ---
+color  = white
+
+[cowfish]
+right  = /--\
+right1 = >(°°)>
+right2 = \--/
+left   = /--\
+left1  = <(°°)<
+left2  = \--/
+color  = yellow
+
+[trumpetfish]
+right  = -=-=-=><>
+right1 = ·      ·
+right2 = ~~~~~~~~
+left   = <><=-=-=–
+left1  = ·      ·
+left2  = ~~~~~~~~
+color  = yellow
+
+[snapper]
+right  =    /|
+right1 = ><((°·>
+right2 =    \|·
+left   =  |\
+left1  = <·°))><
+left2  = ·|/
+color  = red
+
+[grouper]
+right  =  .·.
+right1 = >(·°·)>
+right2 =  '·'
+left   =  .·.
+left1  = <(·°·)<
+left2  =  '·'
+color  = red
+
+[perch]
+right  = |/\|
+right1 = ><(°>
+right2 = |\/|
+left   = |/\|
+left1  = <°)<
+left2  = |\/|
+color  = green
+
+[sturgeon]
+right  =    ____
+right1 = ><((((°>
+right2 = ·  ~~~~
+left   =    ____
+left1  = <°))))><
+left2  = ~~~~  ·
+color  = white
+
+[sunfish]
+right  = |·|
+right1 = >(O)>
+right2 = |·|
+left   = |·|
+left1  = <(O)<
+left2  = |·|
+color  = cyan
+
+[oarfish_sm]
+right  =  ~~~~
+right1 = >~~~~>
+right2 =  ~~~~
+left   =  ~~~~
+left1  = <~~~~<
+left2  =  ~~~~
+color  = white
+
+
+# ════════════════════════════════════════════════════════════════════
+#  TALL  (4–7 rows, large or unusual creatures)
+# ════════════════════════════════════════════════════════════════════
+
+[stingray]
+right  =           /\
+right1 =         ./  |
+right2 =        /     \
+right3 = ------<      :|
+right4 =        \     /
+right5 =         '\  |
+right6 =           \/
+left   =    /\
+left1  =   |  \.
+left2  =  /     \
+left3  = |:      >------
+left4  =  \     /
+left5  =   |  /'
+left6  =    \/
+color  = white
+
+[anglerfish]
+right  =   /¯¯\
+right1 = ·(°  °)=>
+right2 =  (    )
+right3 =   \__/
+left   =  /¯¯\
+left1  = <=( °  °)·
+left2  =  (    )
+left3  =   \__/
+color  = black
+
+[coelacanth]
+right  =    ___
+right1 =   /· ·\
+right2 = --< ° >--=>
+right3 =   \___/
+left   =    ___
+left1  =   /· ·\
+left2  = <=--< ° >--
+left3  =   \___/
+color  = cyan
+
+[whale]
+right  =    ____
+right1 =   /    \
+right2 = >(  °  )>
+right3 =   \    /
+right4 =    \__/ ~
+left   =     ____
+left1  =    /    \
+left2  = <(  °  )<
+left3  =    \    /
+left4  =  ~ \__/
+color  = white
+
+[octopus]
+right  =  /¯¯¯\
+right1 = (° · °)
+right2 =  \_V_/
+right3 = /|||||\ 
+left   =  /¯¯¯\
+left1  = (° · °)
+left2  =  \_V_/
+left3  = /|||||\
+color  = magenta
+
+[shark]
+right  =    /\
+right1 =   /  \
+right2 = >(°   )>---
+right3 =   \  /
+right4 =    \/
+left   =     /\
+left1  =    /  \
+left2  = ---<(   °)<
+left3  =    \  /
+left4  =     \/
+color  = white
+
+[narwhal]
+right  = ------>
+right1 = ( °  )>
+right2 = (    )
+right3 = (    )>
+right4 =  \__/
+left   = <------
+left1  = <(  ° )
+left2  =  (    )
+left3  = <(    )
+left4  =  \__/
+color  = white
+
+[oarfish]
+right  =   |
+right1 =  /|\
+right2 = > ° \~~~~~~~~~~~~~~~~~~~~>
+right3 =  \|/
+right4 =   |
+left   =   |
+left1  =  /|\
+left2  = <~~~~~~~~~~~~~~~~~~~~/ ° <
+left3  =  \|/
+left4  =   |
+color  = white
+
+[jellyfish]
+right  =  (~~~)
+right1 = (°   °)
+right2 =  (~~~)
+right3 =  | | |
+right4 =  | | |
+left   =  (~~~)
+left1  = (°   °)
+left2  =  (~~~)
+left3  =  | | |
+left4  =  | | |
+color  = cyan
+
+[turtle]
+right  =   ___
+right1 =  /· ·\
+right2 = ( ~~~~ )=>
+right3 =  \___/
+left   =    ___
+left1  =   /· ·\
+left2  = <=( ~~~~ )
+left3  =   \___/
+color  = green
+
+[lobster]
+right  = \(·)/ 
+right1 =  )|(
+right2 =  |||
+right3 = /|||\ 
+left   =  \(·)/
+left1  =   )|(
+left2  =   |||
+left3  =  /|||\
+color  = red

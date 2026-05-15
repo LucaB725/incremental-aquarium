@@ -30,8 +30,8 @@ const FISH_PALETTE_SIZE = 6; // CP_FISH has 6 slots
 // ── Built-in fallback sprites (mirrors SpriteLibrary.BUILTIN) ────────────────
 
 const BUILTIN = [
-  { rowsRight: ['><>'],    rowsLeft: ['<><'],    colorIdx: 0 },
-  { rowsRight: ['><((°>'], rowsLeft: ['<°))><'], colorIdx: 3 },
+  { name: 'fish',        rowsRight: ['><>'],    rowsLeft: ['<><'],    colorIdx: 0 },
+  { name: 'tropical',   rowsRight: ['><((°>'], rowsLeft: ['<°))><'], colorIdx: 3 },
 ];
 
 
@@ -86,7 +86,7 @@ export class SpriteLibrary {
         if (current.right !== undefined && current.left !== undefined) {
           this._commit(current);
         }
-        current = {};
+        current = { _name: stripped.slice(1, -1) };
         continue;
       }
 
@@ -166,7 +166,8 @@ export class SpriteLibrary {
       ? d.colorIdx
       : Math.floor(Math.random() * FISH_PALETTE_SIZE);
 
-    this.sprites.push({ rowsRight, rowsLeft, colorIdx });
+    const name = (d._name && d._name.trim()) ? d._name.trim() : `fish_${this.sprites.length}`;
+    this.sprites.push({ name, rowsRight, rowsLeft, colorIdx });
   }
 
   // ── Public API ───────────────────────────────────────────────────────────────
