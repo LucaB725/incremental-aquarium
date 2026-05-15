@@ -20,6 +20,7 @@ import { CanvasRenderer, buildStyles, DAY_WATER_FG, DAY_WATER_BG,
          NIGHT_WATER_FG, NIGHT_WATER_BG }   from './renderer.js';
 import { SpriteLibrary }                     from './sprites.js';
 import { ThemeManager, buildActiveConfig }   from './theme.js';
+import { ConfigPanel }                        from './config.js';
 
 // ── Seaweed animation frames (mirrors SEAWEED_FRAMES) ────────────────────────
 
@@ -368,7 +369,7 @@ function drawBubble(renderer, bubble, styles) {
 function drawStatus(renderer, state, styles) {
   const { fishList, paused, dayNight, themeLabel } = state;
   const phase = dayNight.isNight() ? 'night' : 'day';
-  let msg = `  fish:${fishList.length}  |  +/- add/remove  |  p pause  |  t theme:${themeLabel}  |  r reload  |  q quit  |  ${phase}`;
+  let msg = `  fish:${fishList.length}  |  +/- add/remove  |  p pause  |  t theme:${themeLabel}  |  r reload  |  c config  |  ${phase}`;
   if (paused) msg = '  PAUSED  ' + msg;
   renderer.puts(renderer.h - 1, 0, msg.slice(0, renderer.w), styles.STATUS);
 }
@@ -417,21 +418,47 @@ async function init() {
   if (urlTheme) themeMgr.select(urlTheme);
 
   let { cfg, fishUrl, layout } = await buildActiveConfig(themeMgr);
-  let lib     = await SpriteLibrary.load(fishUrl);
-  let styles  = buildStyles(cfg);
+  let lib      = await SpriteLibrary.load(fishUrl);
+  let styles   = buildStyles(cfg);
   let dayNight = new DayNight(cfg);
   let scenery  = new Scenery(renderer.h, renderer.w, layout);
 
   let fishList = Array.from({ length: cfg.fish_start },
     () => spawnFish(renderer.h, renderer.w, lib, cfg));
-  let bubbles  = [];
-  let paused   = false;
+  let bubbles = [];
+  let paused  = false;
 
   const frameMs = () => 1000 / Math.max(1, Math.min(60, cfg.fps));
 
-  // ── Reload helper — mirrors _build_active_config ──────────────────────────
+  // ── User config helpers ───────────────────────────────────────────────────
+  // Read saved user overrides from localStorage.
+  function loadUserOverrides() {
+    try {
+      return JSON.parse(localStorage.getItem('aquarium_user_cfg') || '{}');
+    } catch { return {}; }
+  }
+
+  // Apply saved overrides onto a cfg object in-place.
+  // Also returns the fish library URL the user last chose (or null).
+  function applyUserOverrides(targetCfg) {
+    const saved = loadUserOverrides();
+    for (const [k, v] of Object.entries(saved)) {
+      if (k in targetCfg) targetCfg[k] = v;
+    }
+    return saved._fish_library ?? null;
+  }
+
+  // ── Reload helper ─────────────────────────────────────────────────────────
+  // Single source of truth for rebuilding cfg, lib, styles, dayNight.
+  // Always applies user overrides as the final step so they win over
+  // both the base aquarium.cfg and any theme overrides.
   async function reload() {
     ({ cfg, fishUrl, layout } = await buildActiveConfig(themeMgr));
+
+    // User-chosen fish library overrides the theme/default fish URL
+    const userFishUrl = applyUserOverrides(cfg);
+    if (userFishUrl) fishUrl = userFishUrl;
+
     lib      = await SpriteLibrary.load(fishUrl);
     styles   = buildStyles(cfg);
     dayNight = new DayNight(cfg);
@@ -446,7 +473,29 @@ async function init() {
     renderer.invalidate();
   }
 
-  // ── Keyboard input (mirrors main() key handling) ──────────────────────────
+  // ── Apply user overrides on first load ────────────────────────────────────
+  {
+    const userFishUrl = applyUserOverrides(cfg);
+    if (userFishUrl) fishUrl = userFishUrl;
+    lib      = await SpriteLibrary.load(fishUrl);
+    styles   = buildStyles(cfg);
+    dayNight = new DayNight(cfg);
+  }
+
+  // ── Config panel ──────────────────────────────────────────────────────────
+  const configPanel = new ConfigPanel({
+    onSave: async (overrides) => {
+      // Persist, then do a full reload so every system picks up the changes
+      localStorage.setItem('aquarium_user_cfg', JSON.stringify(overrides));
+      await reload();
+      // Respawn fish so they use the newly loaded sprite library
+      fishList = fishList.map(() => spawnFish(renderer.h, renderer.w, lib, cfg));
+      bubbles  = [];
+      renderer.invalidate();
+    },
+  });
+
+  // ── Keyboard input ────────────────────────────────────────────────────────
   window.addEventListener('keydown', async (e) => {
     switch (e.key) {
       case 'p': case 'P':
@@ -461,6 +510,9 @@ async function init() {
         break;
       case 'r': case 'R':
         await reload();
+        break;
+      case 'c': case 'C':
+        configPanel.open(cfg);
         break;
       case 't':
         await switchTheme(1);
@@ -510,6 +562,12 @@ async function init() {
       for (const s of styles.FISH) s.bg = wc.bg;
       for (const key of ['BORDER','BUBBLE','SEAWEED','ROCK','CORAL','SAND','CHEST'])
         styles[key].bg = wc.bg;
+
+      // Tell the renderer what the water color is BEFORE any drawing.
+      // _clearGrid() uses this so transparent sprite gaps and undrawn cells
+      // always get the current water background, not the hardcoded day value.
+      renderer.waterFg = wc.fg;
+      renderer.waterBg = wc.bg;
 
       // Render
       drawBackground(renderer, styles.WATER);
